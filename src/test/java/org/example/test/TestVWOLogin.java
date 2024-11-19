@@ -25,14 +25,13 @@ public class TestVWOLogin {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        chromeDriver.findElement(By.id("js-login-btn")).click();
+        chromeDriver.findElement(By.xpath("(//button[@type='submit'])[1]")).click();
 
-        WebElement err_msg = chromeDriver.findElement(By.className("notification-box-description"));
+        WebElement err_msg = chromeDriver.findElement(By.xpath("//div[@class='notification-box-description']"));
         String error_msg_txt = err_msg.getText();
         String error_attribute = err_msg.getAttribute("data-qa");
         System.out.println(error_attribute);
 
-//        Assert.assertEquals(error_msg_txt, "Your email, password, IP address or location did not match");
         Assert.assertEquals(error_msg_txt, "Your email, password, IP address or location did not match");
         chromeDriver.quit();
     }
