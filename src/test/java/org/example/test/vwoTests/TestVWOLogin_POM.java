@@ -22,7 +22,7 @@ public class TestVWOLogin_POM extends CommonToAllPage {
         LoginPage_POM loginPagePom = new LoginPage_POM(DriverManager.getDriver());
         logger.info("Opening the URL");
         String error_msg_text = loginPagePom.loginToVWOInvalidCreds(PropertyReader.readKey("invalid_username"), PropertyReader.readKey("invalid_password"));
-        logger.info("Verifying the Username is the Dashboard!");
+        logger.info("Verifying the Username is the " + error_msg_text);
         assertThat(error_msg_text).isNotBlank().isNotNull().isNotEmpty();
         Assert.assertEquals(error_msg_text, PropertyReader.readKey("error_message"));
     }
